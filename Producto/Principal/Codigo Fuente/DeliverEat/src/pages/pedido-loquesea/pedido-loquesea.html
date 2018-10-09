@@ -43,11 +43,12 @@
               [(ngModel)]="producto.descripcion"></ion-textarea>
           </ion-item>
 
-          <ion-item >
+          <ion-item>
             <ion-label stacked text-wrap>¿Cuál es la dirección del lugar? (*)</ion-label>
-            <ion-input *ngIf="direccionPorTexto" type="text" [class.invalid]="!pasoUno.controls.direccionComercio.valid" formControlName="direccionComercio"
-              [(ngModel)]="producto.direccionComercio"></ion-input>
-              <ion-input type="text" *ngIf="!direccionPorTexto" formControlName="coordenadas" value="Punto en mapa."disabled></ion-input>
+            <ion-input *ngIf="direccionPorTexto" type="text" [class.invalid]="!pasoUno.controls.direccionComercio.valid"
+              formControlName="direccionComercio" [(ngModel)]="producto.direccionComercio"></ion-input>
+            <ion-input type="text" *ngIf="!direccionPorTexto" formControlName="coordenadas" value="Punto en mapa."
+              disabled></ion-input>
             <button *ngIf="direccionPorTexto" ion-button item-end icon-only (click)="mostrarMapa()" clear color="dark">
               <ion-icon item-end name="pin"></ion-icon>
             </button>
@@ -103,13 +104,25 @@
           <ion-item>
             <ion-label stacked text-wrap>¿Cuándo? (*)</ion-label>
           </ion-item>
-          <ion-item>
-            <ion-label stacked text-wrap>Lo antes posible</ion-label>
-            <ion-radio value="fechaActivada" [checked]="!fechaActivada" (ionSelect)="switchFecha()">Lo antes posible</ion-radio>
-          </ion-item>
+          <ion-list radio-group>
+            <ion-item>
+              <ion-label stacked text-wrap>Lo antes posible</ion-label>
+              <ion-radio value="fechaActivada" [checked]="!fechaActivada" (ionSelect)="switchFecha()">Lo antes
+                posible</ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label stacked text-wrap>En esta fecha:</ion-label>
+              <ion-radio [checked]="fechaActivada" (ionSelect)="switchFecha()"></ion-radio>
+
+            </ion-item>
+
+
+          </ion-list>
           <ion-item>
             <ion-input type="date" [class.invalid]="!pasoDos.controls.fechaEntrega.valid" [(ngModel)]="pedido.fechaEntrega"
               formControlName="fechaEntrega" [disabled]="!fechaActivada"></ion-input>
+
+
           </ion-item>
         </form>
       </ion-card>

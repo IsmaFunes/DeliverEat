@@ -4,39 +4,36 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
 import { GoogleMaps } from '@ionic-native/google-maps';
-import { Geolocation  } from '@ionic-native/geolocation'
+import { Geolocation } from '@ionic-native/geolocation'
 import { ImagePicker } from '@ionic-native/image-picker';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    ListPage
+    HomePage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false } ),
+    IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    ListPage
+    HomePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Camera,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     GoogleMaps,
     Geolocation,
     ImagePicker
   ]
 })
-export class AppModule {}
+export class AppModule { }
